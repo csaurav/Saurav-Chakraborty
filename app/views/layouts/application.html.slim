@@ -48,7 +48,10 @@ html lang="en"
           .col-md-2
             ul
               li LATEST
-              li ~
+              li 
+                - cache do 
+                    - recent_albums.each do |album|
+                       li= link_to album.name.titleize, '#'
           .col-md-2
             ul
               li OUR TEAM
