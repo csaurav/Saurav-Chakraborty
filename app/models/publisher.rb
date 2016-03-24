@@ -13,6 +13,8 @@ class Publisher < ActiveRecord::Base
   validates :address, length: { in: 5..50 }
   validates :city, length: { in: 5..50 }
   validates :state, length: { is: 2 }
+  # for task # 6 already validation is present and it would not allow a publisher to be 
+  # saved without having a zip code
   validates :zip, format: { with: /\A\d{5}\z/, message: "should be five digits" }
   validates :phone, format: { with: /\A\d{3}-\d{3}-\d{4}\z/, message: "should look like 210-555-1234" }
   validates :url, format: { with: /\Ahttp:\/\/.+\z/, message: "should look like http://www.yahoo.com" }
