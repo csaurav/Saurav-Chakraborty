@@ -1,7 +1,18 @@
 class ArtistsController < ApplicationController
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
 
+  before_action :set_profile_pic, only: :show
   respond_to :html
+
+  def set_profile_pic
+    return if @artist.profile_pic_url.present?
+    url = URI.parse("https://randomuser.me/api/")
+    req = Net::HTTP::Get.new(url.to_s)
+    res = Net::HTTP.start(url.host, url.port, use_ssl: url.scheme == 'https') { |http| http.request(req)  }
+    thumnail_pic = JSON.parse(res.body)['results'].first["user"]["picture"]["thumbnail"]
+    @artist.update_attribute(:profile_pic_url, thumnail_pic.gsub("\"","").strip)
+   end
+
 
   def index
     @artists = Artist.all
