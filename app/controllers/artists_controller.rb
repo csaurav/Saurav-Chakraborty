@@ -36,6 +36,11 @@ class ArtistsController < ApplicationController
     respond_with(@artist)
   end
 
+  def newest
+    @artist = Artist.order('created_at ASC').last
+    render :show  
+  end
+
   private
     def set_artist
       @artist = Artist.find(params[:id])

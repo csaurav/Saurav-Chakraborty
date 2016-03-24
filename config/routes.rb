@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :artists
+  resources :artists do
+    get 'newest', on: :collection
+  end
   resources :songs
   resources :albums
   resources :publishers
