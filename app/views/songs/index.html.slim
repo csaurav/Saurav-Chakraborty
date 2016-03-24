@@ -12,8 +12,9 @@ table.table.table-striped
       th artist
   tbody
     - @songs.each do |song|
-      tr
+      tr id= song.id
         td= link_to song.name, song
         td= song.album.name
         td= song.artist.name
 
+        td= link_to 'Delete', song, method: :delete, remote: true, 'data-type': :json, class: 'btn btn-primary'
