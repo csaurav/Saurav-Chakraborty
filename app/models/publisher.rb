@@ -1,4 +1,11 @@
 class Publisher < ActiveRecord::Base
+
+  # another implementation could have been to create a state mocdel
+  # instead of this array and then create state_id foreign key in the 
+  # publisher model. 
+  
+  STATES = %w(AL AZ NY)		
+
   has_many :albums
   has_many :songs, through: :albums
   
