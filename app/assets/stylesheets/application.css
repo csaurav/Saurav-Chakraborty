@@ -14,7 +14,12 @@
  *= require_self
  */
  
- .sidebar {
+
+.page-header_publisher h1 {
+    color: #154389;
+}
+
+.sidebar {
    margin-top: 1em;
  }
  
